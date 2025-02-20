@@ -20,11 +20,15 @@ public class PlayerControler : MonoBehaviour
     void Start()
     {
         tHp.maxHP = MaxHP;
+        Save.GetHP();
+        HP = Save.HP;
+        updateHp();
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         
         Save.GetCoins();
         coins = Save.coins;
+        
         updateCoin();
     }
 
@@ -42,6 +46,8 @@ public class PlayerControler : MonoBehaviour
     }
     private void updateHp()
     {
+        
+        Save.SaveHP(HP);
         tHp.UpdateBar(HP);
     }
     private void updateCoin()
@@ -70,6 +76,7 @@ public class PlayerControler : MonoBehaviour
                 {
                     coins = 100;
                     Save.coins = coins;
+                    Save.SaveHP(MaxHP);
                 }
 
             }

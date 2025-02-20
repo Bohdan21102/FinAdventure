@@ -12,7 +12,8 @@ public class EnemyControler : MonoBehaviour
     private bool canHurt = false;
     //знизу public, зверху private
     public float speed = 5f;
-    public float HP;
+    public int HP;
+    public int MaxHP;
     public HP_manager hptxt;
     public int hurt = 10;
     public GameObject coin;

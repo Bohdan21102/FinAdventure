@@ -254,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   HP: 100
+  MaxHP: 100
   hptxt: {fileID: 0}
   hurt: 10
   coin: {fileID: 1609629859038924439, guid: c60981d92f3453d46b5a2eca43bd5953, type: 3}

@@ -10,6 +10,7 @@ public class Barrel : MonoBehaviour
     public bool ÑanHurt;
     public int hpless=0;
     public int health;
+    public int MaxHP;
     public HP_manager hptxt;
 
     public GameObject coin;

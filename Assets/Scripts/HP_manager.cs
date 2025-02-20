@@ -7,11 +7,10 @@ using UnityEngine;
 
 public class HP_manager : MonoBehaviour
 {
-    public TextMeshProUGUI HPtxt;
+    public HP_bar HPtxt;
     public GameObject LastHurtEnemy;
     void Start()
     {
-        HPtxt = GameObject.Find("HP_Enemy").GetComponent<TextMeshProUGUI>();
         HPtxt.gameObject.SetActive(false);
     }
 
@@ -22,12 +21,14 @@ public class HP_manager : MonoBehaviour
             HPtxt.gameObject.SetActive(true);
             if (LastHurtEnemy.GetComponent<EnemyControler>() == null)
             {
-                HPtxt.text = LastHurtEnemy.GetComponent<Barrel>().health + "";
+                HPtxt.maxHP = LastHurtEnemy.GetComponent<Barrel>().MaxHP;
+                HPtxt.UpdateBar(LastHurtEnemy.GetComponent<Barrel>().health);
 
             }
             else
             {
-                HPtxt.text = LastHurtEnemy.GetComponent<EnemyControler>().HP + "";
+                HPtxt.maxHP = LastHurtEnemy.GetComponent<EnemyControler>().MaxHP;
+                HPtxt.UpdateBar(LastHurtEnemy.GetComponent<EnemyControler>().HP);
             }          
         }
         else
