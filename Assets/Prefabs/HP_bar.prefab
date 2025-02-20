@@ -91,5 +91,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RTC: {fileID: 2290082153723091529}
   maxHPWidth: 250
-  maxHP: 5
-  HPtext: {fileID: 0}
+  maxHP: 100

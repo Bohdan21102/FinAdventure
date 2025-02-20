@@ -16,24 +16,27 @@ public class HP_manager : MonoBehaviour
 
     void Update()
     {
-        if (LastHurtEnemy!=null)
+        if(HPtxt!=null)
         {
-            HPtxt.gameObject.SetActive(true);
-            if (LastHurtEnemy.GetComponent<EnemyControler>() == null)
+            if (LastHurtEnemy != null)
             {
-                HPtxt.maxHP = LastHurtEnemy.GetComponent<Barrel>().MaxHP;
-                HPtxt.UpdateBar(LastHurtEnemy.GetComponent<Barrel>().health);
+                HPtxt.gameObject.SetActive(true);
+                if (LastHurtEnemy.GetComponent<EnemyControler>() == null)
+                {
+                    HPtxt.maxHP = LastHurtEnemy.GetComponent<Barrel>().MaxHP;
+                    HPtxt.UpdateBar(LastHurtEnemy.GetComponent<Barrel>().health);
 
+                }
+                else
+                {
+                    HPtxt.maxHP = LastHurtEnemy.GetComponent<EnemyControler>().MaxHP;
+                    HPtxt.UpdateBar(LastHurtEnemy.GetComponent<EnemyControler>().HP);
+                }
             }
             else
             {
-                HPtxt.maxHP = LastHurtEnemy.GetComponent<EnemyControler>().MaxHP;
-                HPtxt.UpdateBar(LastHurtEnemy.GetComponent<EnemyControler>().HP);
-            }          
-        }
-        else
-        {
-            HPtxt.gameObject.SetActive(false);
+                HPtxt.gameObject.SetActive(false);
+            }
         }
     }
 }
