@@ -8,7 +8,7 @@ public class GamaManager : MonoBehaviour
     public void ResetAll()
     {
         Save.Reset();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
     private void Update()
     {

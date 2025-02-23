@@ -17,19 +17,30 @@ public class PlayerControler : MonoBehaviour
     public int hurt = 10;
     public int coins;
     public TextMeshProUGUI tcoin;
+    private void Awake()
+    {
+        Save.GetHP();
+        Save.GetCoins();
+        Save.Gethurt();
+        Save.Getradius();
+        Save.Getspeed();
+        Save.GetmaxHP();
+    }
     void Start()
     {
-        tHp.maxHP = MaxHP;
-        Save.GetHP();
+
+        MaxHP=Save.maxHP;
+        speed = Save.speed;
+        tHp.maxHP = MaxHP;        
         HP = Save.HP;
         updateHp();
         rb2d = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        
-        Save.GetCoins();
-        coins = Save.coins;
-        
+        animator = GetComponent<Animator>();   
+        coins = Save.coins;      
         updateCoin();
+        hurt = Save.hurt;
+        transform.GetChild(1).localScale= new Vector3(Save.radius, Save.radius, 0);
+        speed = Save.speed; 
     }
 
 
@@ -71,7 +82,8 @@ public class PlayerControler : MonoBehaviour
             animator.Play("Hurt");
             if(HP <=0)
             {
-                SceneManager.LoadScene(0);
+                HP = MaxHP;
+                SceneManager.LoadScene(1);
                 if(coins>100)
                 {
                     coins = 100;

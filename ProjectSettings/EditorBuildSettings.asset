@@ -9,9 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 2210abc254f886445bf7eb38d1874603
+  - enabled: 1
     path: Assets/Scenes/Map.unity
     guid: 4197394ba4389cd43a2626a653029686
   - enabled: 1
     path: Assets/Scenes/Dungeon.unity
     guid: 51f6f9cef24f34d49b9cf9884dabd552
+  - enabled: 1
+    path: Assets/Scenes/SwordShop.unity
+    guid: 2df30d573b89cf94197d9c02ab2134df
+  - enabled: 1
+    path: Assets/Scenes/HealthShop.unity
+    guid: bde93b63793e494408eff221165d5c79
   m_configObjects: {}

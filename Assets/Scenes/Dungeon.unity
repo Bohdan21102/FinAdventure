@@ -32694,6 +32694,10 @@ PrefabInstance:
       propertyPath: exit
       value: 
       objectReference: {fileID: 1098943516}
+    - target: {fileID: 2611791363216800163, guid: 378b5bc09ebee7a46b877ebc6ae30b2b, type: 3}
+      propertyPath: scene
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 378b5bc09ebee7a46b877ebc6ae30b2b, type: 3}
 --- !u!1001 &2933946929288936841

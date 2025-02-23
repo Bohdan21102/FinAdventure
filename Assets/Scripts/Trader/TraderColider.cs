@@ -5,12 +5,12 @@ using UnityEngine;
 public class TraderColider : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Transform trader;
+    private GameObject trader;
 
     void Start()
     {
 
-        trader=GetComponentInParent<Transform>();
+        trader=GetComponentInParent<Transform>().gameObject;
         Debug.Log(trader);
     }
 
@@ -18,13 +18,15 @@ public class TraderColider : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("Enter");
-        if(collision.gameObject.tag=="Player")
+        if (collision.gameObject.tag == "Player")
         {
-            //Debug.Log("Player");
             if (trader.GetComponent<TraderSword>() != null)
             {
-                Debug.Log("Trade");
-                trader.GetComponent<TraderSword>().isplayerthere=true;
+                trader.GetComponent<TraderSword>().isplayerthere = true;
+            }
+            else if (trader.GetComponent<HealthTrader>() != null)
+            {
+                trader.GetComponent<HealthTrader>().isplayerthere = true;
             }
         }
     }
@@ -35,6 +37,10 @@ public class TraderColider : MonoBehaviour
             if (trader.GetComponent<TraderSword>() != null)
             {
                 trader.GetComponent<TraderSword>().isplayerthere = false;
+            }
+            else if(trader.GetComponent<HealthTrader>()!=null)
+            {
+                trader.GetComponent<HealthTrader>().isplayerthere = false;
             }
         }
     }
