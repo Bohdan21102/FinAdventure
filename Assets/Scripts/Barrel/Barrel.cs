@@ -7,7 +7,7 @@ using UnityEngine;
 public class Barrel : MonoBehaviour
 {
 
-    public bool ÑanHurt;
+    public bool CanHurt;
     public int hpless=0;
     public int health;
     public int MaxHP;
@@ -25,20 +25,20 @@ public class Barrel : MonoBehaviour
     {
         if (collision.gameObject.tag == "AttackColider")
         {
-            ÑanHurt = true;
+            CanHurt = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "AttackColider")
         {
-            ÑanHurt = false;
+            CanHurt = false;
         }
     }
     private void OnMouseDown()
     {
         Debug.Log(0);
-        if (ÑanHurt == true)
+        if (CanHurt == true)
         {
             Debug.Log(1);
             health -= hpless;
