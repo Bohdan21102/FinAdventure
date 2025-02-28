@@ -4,44 +4,34 @@ using UnityEngine;
 
 public class TraderColider : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private GameObject trader;
+    public GameObject trader;
 
     void Start()
     {
-
-        trader=GetComponentInParent<Transform>().gameObject;
-        Debug.Log(trader);
+        trader = transform.parent.gameObject;
     }
 
-    // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Enter");
-        if (collision.gameObject.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
-            if (trader.GetComponent<TraderSword>() != null)
-            {
-                trader.GetComponent<TraderSword>().isplayerthere = true;
-            }
-            else if (trader.GetComponent<HealthTrader>() != null)
-            {
-                trader.GetComponent<HealthTrader>().isplayerthere = true;
-            }
+            var swordTrader = trader.GetComponent<TraderSword>();
+            var healthTrader = trader.GetComponent<HealthTrader>();
+
+            if (swordTrader != null) swordTrader.isplayerthere = true;
+            if (healthTrader != null) healthTrader.isplayerthere = true;
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
-            if (trader.GetComponent<TraderSword>() != null)
-            {
-                trader.GetComponent<TraderSword>().isplayerthere = false;
-            }
-            else if(trader.GetComponent<HealthTrader>()!=null)
-            {
-                trader.GetComponent<HealthTrader>().isplayerthere = false;
-            }
+            var swordTrader = trader.GetComponent<TraderSword>();
+            var healthTrader = trader.GetComponent<HealthTrader>();
+
+            if (swordTrader != null) swordTrader.isplayerthere = false;
+            if (healthTrader != null) healthTrader.isplayerthere = false;
         }
     }
 }

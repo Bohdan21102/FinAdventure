@@ -5,10 +5,12 @@ using UnityEngine;
 public class CoinScript : MonoBehaviour
 {
     private bool cancollect = false;
-    private int value = 10;
+    public int value = 10;
     private Animator animator;
     void Start()
     {
+        Save.GetPrice();
+        value=Save.price;
         animator = GetComponent<Animator>();
         new WaitForSeconds(1);
         cancollect = true;

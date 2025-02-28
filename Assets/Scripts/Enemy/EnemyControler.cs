@@ -59,8 +59,8 @@ public class EnemyControler : MonoBehaviour
             
             if (HP <= 0)
             {
- 
-                for(int i =0; i<coinsCount+1;i++)
+                Save.Getcoinboost(); 
+                for(int i =0; i<coinsCount+1 + Save.coinboost; i++)
                 {
                     Instantiate(coin, transform.position + new Vector3(Random.Range(-2, 2),Random.Range(-2,2),transform.position.z), Quaternion.identity);
                 }

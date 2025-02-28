@@ -8,7 +8,10 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(!Save.playedBefore)
+        {
+            Save.Reset();
+        }
     }
 
     // Update is called once per frame
@@ -19,5 +22,6 @@ public class MenuManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(1);
+        Save.playedBefore=true;
     }
 }
