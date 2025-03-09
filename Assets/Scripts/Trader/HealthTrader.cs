@@ -9,38 +9,62 @@ public class HealthTrader : MonoBehaviour
     public bool isplayerthere = false;
     public GameObject shop;
     public PlayerControler player;
-    //1 is names for speed
-    //2 is names for hp
+
     public TextMeshProUGUI currentlvl1txt;
     public TextMeshProUGUI nextlvl1txt;
     public TextMeshProUGUI currentlvl2txt;
     public TextMeshProUGUI nextlvl2txt;
-    public int[] prices1 = { 0, 100, 200, 500 };
-    //index 0 is default
-    public int[] prices2 = { 0, 200, 500, 2000 };
-    public float[] results1 = { 5, 7, 10, 15 };
-    public int[] results2 = { 100, 150, 200, 500 };
+
+    public int[] prices1 = { 0, 100, 200, 500 }; // Speed upgrade prices
+    public int[] prices2 = { 0, 200, 500, 2000 }; // MaxHP upgrade prices
+    public float[] results1 = { 5, 7, 10, 15 }; // Speed upgrade results
+    public int[] results2 = { 100, 150, 200, 500 }; // MaxHP upgrade results
+
     public int cur1;
     public int cur2;
 
     void Start()
     {
-        player.GetComponent<PlayerControler>().HP= player.GetComponent<PlayerControler>().MaxHP;
+        // Load current values for cur1 and cur2 from save system
+        Save.GetCur1_trader2();
+        Save.GetCur2_trader2();
+        cur1 = Save.cur1_trader2;
+        cur2 = Save.cur2_trader2;
+
+        // Ensure the shop is hidden initially
+        
+
+        // Check if player reference is set
+        if (player == null)
+        {
+            Debug.LogError("Player reference is missing in HealthTrader!");
+            return;
+        }
+
+        // Set initial HP to MaxHP
+        player.HP = player.MaxHP;
         updatePrices();
         shop.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Show the shop if the player is nearby
         if (isplayerthere)
         {
             shop.gameObject.SetActive(true);
-
         }
     }
+
     public void Buy(int Buying)
     {
+        if (player == null)
+        {
+            Debug.LogError("Player reference is missing in HealthTrader!");
+            return;
+        }
+
+        // Buying speed upgrade (cur1)
         if (Buying == 0)
         {
             if (cur1 + 1 < prices1.Length)
@@ -49,20 +73,23 @@ public class HealthTrader : MonoBehaviour
                 {
                     player.coins -= prices1[cur1 + 1];
                     cur1++;
-                    player.gameObject.GetComponent<PlayerControler>().speed = results1[cur1];
+                    player.speed = results1[cur1];
                     Save.speed = results1[cur1];
                     Save.Savespeed();
+                    Save.cur1_trader2 = cur1;
+                    Save.SaveCur1_trader2();
                 }
                 else
                 {
-                    //Debug.Log("Недостатньо монет для покупки наступної швидкості");
+                    Debug.Log("Not enough coins for speed upgrade.");
                 }
             }
             else
             {
-                //Debug.Log("Досягнуто максимальної швидкості");
+                Debug.Log("Max speed level reached.");
             }
         }
+        // Buying MaxHP upgrade (cur2)
         else if (Buying == 1)
         {
             if (cur2 + 1 < prices2.Length)
@@ -71,44 +98,67 @@ public class HealthTrader : MonoBehaviour
                 {
                     player.coins -= prices2[cur2 + 1];
                     cur2++;
-                    player.gameObject.GetComponent<PlayerControler>().hurt = results2[cur2];
+
+                    // Update HP and MaxHP for the player
                     Save.maxHP = results2[cur2];
-                    player.GetComponent<PlayerControler>().HP = results2[cur2];
-                    player.GetComponent<PlayerControler>().MaxHP = results2[cur2];
+                    player.HP = results2[cur2];
+                    player.MaxHP = results2[cur2];
+                    player.tHp.maxHP = results2[cur2]; // Assuming tHp is a health component
+
                     Save.SavemaxHP();
+                    Save.cur2_trader2 = cur2;
+                    Save.SaveCur2_trader2(); // Fixed typo here
                 }
                 else
                 {
-                    //Debug.Log("Недостатньо монет для більшого хп");
+                    Debug.Log("Not enough coins for MaxHP upgrade.");
                 }
             }
             else
             {
-                //Debug.Log("Досягнуто максимального хп");
+                Debug.Log("Max MaxHP level reached.");
             }
         }
 
+        // Update UI after the purchase
         updatePrices();
     }
 
     public void updatePrices()
     {
+        if (currentlvl1txt == null || nextlvl1txt == null || currentlvl2txt == null || nextlvl2txt == null)
+        {
+            Debug.LogError("One or more UI references are missing in HealthTrader!");
+            return;
+        }
+
+        // Update current and next speed value
         currentlvl1txt.text = "Current speed: " + results1[cur1];
-        currentlvl2txt.text = "Current MaxHP: " + results2[cur2];
-
         if (cur1 + 1 < results1.Length)
+        {
             nextlvl1txt.text = "Next speed: " + results1[cur1 + 1] + " - " + prices1[cur1 + 1];
+            nextlvl1txt.gameObject.GetComponentInParent<Button>().interactable = player.coins >= prices1[cur1 + 1];
+        }
         else
+        {
             nextlvl1txt.text = "Max level reached";
-            currentlvl1txt.gameObject.GetComponentInParent<Button>().interactable = false;
+            nextlvl1txt.gameObject.GetComponentInParent<Button>().interactable = false;
+        }
 
+        // Update current and next MaxHP value
+        currentlvl2txt.text = "Current MaxHP: " + results2[cur2];
         if (cur2 + 1 < results2.Length)
+        {
             nextlvl2txt.text = "Next MaxHP: " + results2[cur2 + 1] + " - " + prices2[cur2 + 1];
+            nextlvl2txt.gameObject.GetComponentInParent<Button>().interactable = player.coins >= prices2[cur2 + 1];
+        }
         else
+        {
             nextlvl2txt.text = "Max level reached";
-            currentlvl2txt.gameObject.GetComponentInParent<Button>().interactable = false;
-
+            nextlvl2txt.gameObject.GetComponentInParent<Button>().interactable = false;
+        }
     }
+
     public void hideShop()
     {
         shop.gameObject.SetActive(false);

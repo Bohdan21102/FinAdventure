@@ -25,8 +25,14 @@ public class TraderSword : MonoBehaviour
     
     void Start()
     {
+        Save.GetCur1_trader3();
+        Save.GetCur2_trader3();
+        cur1 = Save.cur1_trader3;
+        cur2 = Save.cur2_trader3;
+        
         updatePrices();
-        shop.gameObject.SetActive(false);   
+        shop.gameObject.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -51,6 +57,8 @@ public class TraderSword : MonoBehaviour
                     player.gameObject.transform.GetChild(1).transform.localScale = new Vector3(results1[cur1], results1[cur1], 0);
                     Save.radius = results1[cur1];
                     Save.Saveradius();
+                    Save.cur1_trader3 = cur1;
+                    Save.SaveCur1_trader3();
                 }
                 else
                 {
@@ -73,6 +81,8 @@ public class TraderSword : MonoBehaviour
                     player.gameObject.GetComponent<PlayerControler>().hurt = results2[cur2];
                     Save.hurt = results2[cur2];
                     Save.Savehurt();
+                    Save.cur2_trader3 = cur2;
+                    Save.SaveCur2_trader3();
                 }
                 else
                 {
@@ -90,21 +100,40 @@ public class TraderSword : MonoBehaviour
 
     public void updatePrices()
     {
+        if (currentlvl1txt == null || nextlvl1txt == null || currentlvl2txt == null || nextlvl2txt == null)
+        {
+            Debug.LogError("One or more UI references are missing in HealthTrader!");
+            return;
+        }
+
+        // Update current and next speed value (for radius)
         currentlvl1txt.text = "Current radius: " + results1[cur1];
-        currentlvl2txt.text = "Current hurt: " + results2[cur2];
-
         if (cur1 + 1 < results1.Length)
+        {
             nextlvl1txt.text = "Next radius: " + results1[cur1 + 1] + " - " + prices1[cur1 + 1];
+            nextlvl1txt.gameObject.GetComponentInParent<Button>().interactable = player.coins >= prices1[cur1 + 1];
+        }
         else
+        {
             nextlvl1txt.text = "Max level reached";
-            currentlvl1txt.gameObject.GetComponentInParent<Button>().interactable = false;
+            nextlvl1txt.gameObject.GetComponentInParent<Button>().interactable = false;
+        }
 
+        // Update current and next MaxHP value (for hurt)
+        currentlvl2txt.text = "Current hurt: " + results2[cur2];
         if (cur2 + 1 < results2.Length)
+        {
             nextlvl2txt.text = "Next hurt: " + results2[cur2 + 1] + " - " + prices2[cur2 + 1];
+            nextlvl2txt.gameObject.GetComponentInParent<Button>().interactable = player.coins >= prices2[cur2 + 1];
+        }
         else
+        {
             nextlvl2txt.text = "Max level reached";
-            currentlvl2txt.gameObject.GetComponentInParent<Button>().interactable = false;
+            nextlvl2txt.gameObject.GetComponentInParent<Button>().interactable = false;
+        }
     }
+
+
     public void hideShop()
     {
         shop.gameObject.SetActive(false);

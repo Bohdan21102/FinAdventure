@@ -26,8 +26,15 @@ public class CoinTrader : MonoBehaviour
 
     void Start()
     {
+        Save.GetCur1_trader1();
+        Save.GetCur2_trader1();
+        cur1 = Save.cur1_trader1;
+        cur2 = Save.cur2_trader1;
+        
         updatePrices();
         shop.gameObject.SetActive(false);
+
+
     }
 
     // Update is called once per frame
@@ -51,6 +58,8 @@ public class CoinTrader : MonoBehaviour
                     cur1++;
                     Save.price = results1[cur1];
                     Save.SavePrice();
+                    Save.cur1_trader1 = cur1;
+                    Save.SaveCur1_trader1();
                 }
                 else
                 {
@@ -74,6 +83,8 @@ public class CoinTrader : MonoBehaviour
                     Save.coinboost = results2[cur2];
                     
                     Save.Savecoinboost();
+                    Save.cur2_trader1 = cur2;
+                    Save.SaveCur2_trader1();
                 }
                 else
                 {
@@ -91,22 +102,35 @@ public class CoinTrader : MonoBehaviour
 
     public void updatePrices()
     {
+        // Оновлення тексту для поточного рівня та ціни для першої властивості
         currentlvl1txt.text = "Current value: " + results1[cur1];
-        currentlvl2txt.text = "Current coin boost: " + results2[cur2];
 
         if (cur1 + 1 < results1.Length)
             nextlvl1txt.text = "Next value: " + results1[cur1 + 1] + " - " + prices1[cur1 + 1];
         else
             nextlvl1txt.text = "Max level reached";
-        currentlvl1txt.gameObject.GetComponentInParent<Button>().interactable = false;
+
+        // Оновлення статусу кнопки для першої властивості (якщо є достатньо монет для покупки наступного рівня)
+        if (cur1 + 1 < prices1.Length && player.coins >= prices1[cur1 + 1])
+            currentlvl1txt.gameObject.GetComponentInParent<Button>().interactable = true;
+        else
+            currentlvl1txt.gameObject.GetComponentInParent<Button>().interactable = false;
+
+        // Оновлення тексту для поточного рівня та ціни для другої властивості
+        currentlvl2txt.text = "Current coin boost: " + results2[cur2];
 
         if (cur2 + 1 < results2.Length)
             nextlvl2txt.text = "Next coin boost: " + results2[cur2 + 1] + " - " + prices2[cur2 + 1];
         else
             nextlvl2txt.text = "Max level reached";
-        currentlvl2txt.gameObject.GetComponentInParent<Button>().interactable = false;
 
+        // Оновлення статусу кнопки для другої властивості (якщо є достатньо монет для покупки наступного рівня)
+        if (cur2 + 1 < prices2.Length && player.coins >= prices2[cur2 + 1])
+            currentlvl2txt.gameObject.GetComponentInParent<Button>().interactable = true;
+        else
+            currentlvl2txt.gameObject.GetComponentInParent<Button>().interactable = false;
     }
+
     public void hideShop()
     {
         shop.gameObject.SetActive(false);
