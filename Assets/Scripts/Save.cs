@@ -10,7 +10,19 @@ public class Save : MonoBehaviour
     public static int radius;
     public static float speed;
     public static int maxHP;
-        
+    public static int price;
+    public static int coinboost;
+    public static bool playedBefore;
+
+    public static int cur1_trader1;  // Trader 1's cur1
+    public static int cur2_trader1;  // Trader 1's cur2
+
+    public static int cur1_trader2;  // Trader 2's cur1
+    public static int cur2_trader2;  // Trader 2's cur2
+
+    public static int cur1_trader3;  // Trader 3's cur1
+    public static int cur2_trader3;  // Trader 3's cur2
+
     public static void SaveCoin()
     {
         PlayerPrefs.SetInt("Coins", coins);
@@ -71,15 +83,121 @@ public class Save : MonoBehaviour
     {
         maxHP = PlayerPrefs.GetInt("maxHP");
     }
+    public static void SavePrice()
+    {
+        PlayerPrefs.SetInt("price", price);
+        PlayerPrefs.Save();
+    }
+
+    public static void GetPrice()
+    {
+        price = PlayerPrefs.GetInt("price");
+    }
+    public static void Savecoinboost()
+    {
+        PlayerPrefs.SetInt("coinboost", coinboost);
+        PlayerPrefs.Save();
+    }
+
+    public static void Getcoinboost()
+    {
+        coinboost = PlayerPrefs.GetInt("coinboost");
+    }
+    public static int convertboolinint(bool booler)
+    {
+        if (booler == false) return 0;
+        if (booler == true) return 1;
+        else return -1;
+    }
+    public static bool convertintinbool(int integer)
+    {
+        if (integer == 0) return false;
+        if (integer == 1) return true;
+        else return false;
+    }
+    public static void SaveCur1_trader1()
+    {
+        PlayerPrefs.SetInt("cur1_trader1", cur1_trader1);
+        PlayerPrefs.Save();
+    }
+
+    public static void SaveCur2_trader1()
+    {
+        PlayerPrefs.SetInt("cur2_trader1", cur2_trader1);
+        PlayerPrefs.Save();
+    }
+    public static void GetCur1_trader1()
+    {
+        cur1_trader1 = PlayerPrefs.GetInt("cur1_trader1");
+    }
+
+    public static void GetCur2_trader1()
+    {
+        cur2_trader1 = PlayerPrefs.GetInt("cur2_trader1");
+    }
+    public static void SaveCur1_trader2()
+    {
+        PlayerPrefs.SetInt("cur1_trader2", cur1_trader2);
+        PlayerPrefs.Save();
+    }
+
+    public static void SaveCur2_trader2()
+    {
+        PlayerPrefs.SetInt("cur2_trader2", cur2_trader2);
+        PlayerPrefs.Save();
+    }
+
+    public static void GetCur1_trader2()
+    {
+        cur1_trader2 = PlayerPrefs.GetInt("cur1_trader2");
+    }
+
+    public static void GetCur2_trader2()
+    {
+        cur2_trader2 = PlayerPrefs.GetInt("cur2_trader2");
+    }
+
+    public static void SaveCur1_trader3()
+    {
+        PlayerPrefs.SetInt("cur1_trader3", cur1_trader3);
+        PlayerPrefs.Save();
+    }
+
+    public static void SaveCur2_trader3()
+    {
+        PlayerPrefs.SetInt("cur2_trader3", cur2_trader3);
+        PlayerPrefs.Save();
+    }
+
+    public static void GetCur1_trader3()
+    {
+        cur1_trader3 = PlayerPrefs.GetInt("cur1_trader3");
+    }
+
+    public static void GetCur2_trader3()
+    {
+        cur2_trader3 = PlayerPrefs.GetInt("cur2_trader3");
+    }
+
     public static void Reset()
     {
-        
+        playedBefore = false;
+        PlayerPrefs.SetInt("playedBefore",convertboolinint(playedBefore));
         PlayerPrefs.SetInt("Coins", 100);
         PlayerPrefs.SetInt("PlayerHP", 100);
         PlayerPrefs.SetInt("hurt", 3);
         PlayerPrefs.SetInt("radius", 3);
         PlayerPrefs.SetFloat("speed", 5f);
         PlayerPrefs.SetInt("maxHP", 100);
+        PlayerPrefs.SetInt("price", 10);
+
+        PlayerPrefs.SetInt("cur1_trader1", 0);
+        PlayerPrefs.SetInt("cur2_trader1", 0);
+        PlayerPrefs.SetInt("cur1_trader2", 0);
+        PlayerPrefs.SetInt("cur2_trader2", 0);
+        PlayerPrefs.SetInt("cur1_trader3", 0);
+        PlayerPrefs.SetInt("cur2_trader3", 0);
+
         PlayerPrefs.Save();
     }
 }

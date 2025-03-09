@@ -4,29 +4,37 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthTrader : MonoBehaviour
+public class CoinTrader : MonoBehaviour
 {
+
     public bool isplayerthere = false;
     public GameObject shop;
     public PlayerControler player;
-    //1 is names for speed
-    //2 is names for hp
+    //1 is names for price
+    //2 is names for amount from enemy (+plus)
     public TextMeshProUGUI currentlvl1txt;
     public TextMeshProUGUI nextlvl1txt;
     public TextMeshProUGUI currentlvl2txt;
     public TextMeshProUGUI nextlvl2txt;
-    public int[] prices1 = { 0, 100, 200, 500 };
+    public int[] prices1 = { 0, 500, 1000, 2000 };
     //index 0 is default
-    public int[] prices2 = { 0, 200, 500, 2000 };
-    public float[] results1 = { 5, 7, 10, 15 };
-    public int[] results2 = { 100, 150, 200, 500 };
+    public int[] prices2 = { 0, 500, 1000, 2000 };
+    public int[] results1 = { 10, 11, 12, 15 };
+    public int[] results2 = { 0, 1, 2, 5 };
     public int cur1;
     public int cur2;
 
     void Start()
     {
-        player.GetComponent<PlayerControler>().HP= player.GetComponent<PlayerControler>().MaxHP;
+        Save.GetCur1_trader1();
+        Save.GetCur2_trader1();
+        cur1 = Save.cur1_trader1;
+        cur2 = Save.cur2_trader1;
+        
+        updatePrices();
         shop.gameObject.SetActive(false);
+
+
     }
 
     // Update is called once per frame
@@ -48,9 +56,10 @@ public class HealthTrader : MonoBehaviour
                 {
                     player.coins -= prices1[cur1 + 1];
                     cur1++;
-                    player.gameObject.GetComponent<PlayerControler>().speed = results1[cur1];
-                    Save.speed = results1[cur1];
-                    Save.Savespeed();
+                    Save.price = results1[cur1];
+                    Save.SavePrice();
+                    Save.cur1_trader1 = cur1;
+                    Save.SaveCur1_trader1();
                 }
                 else
                 {
@@ -70,11 +79,12 @@ public class HealthTrader : MonoBehaviour
                 {
                     player.coins -= prices2[cur2 + 1];
                     cur2++;
-                    player.gameObject.GetComponent<PlayerControler>().hurt = results2[cur2];
-                    Save.maxHP = results2[cur2];
-                    player.GetComponent<PlayerControler>().HP = results2[cur2];
-                    player.GetComponent<PlayerControler>().MaxHP = results2[cur2];
-                    Save.SavemaxHP();
+                    
+                    Save.coinboost = results2[cur2];
+                    
+                    Save.Savecoinboost();
+                    Save.cur2_trader1 = cur2;
+                    Save.SaveCur2_trader1();
                 }
                 else
                 {
@@ -92,22 +102,35 @@ public class HealthTrader : MonoBehaviour
 
     public void updatePrices()
     {
-        currentlvl1txt.text = "Current speed: " + results1[cur1];
-        currentlvl2txt.text = "Current MaxHP: " + results2[cur2];
+        // Оновлення тексту для поточного рівня та ціни для першої властивості
+        currentlvl1txt.text = "Current value: " + results1[cur1];
 
         if (cur1 + 1 < results1.Length)
-            nextlvl1txt.text = "Next speed: " + results1[cur1 + 1] + " - " + prices1[cur1 + 1];
+            nextlvl1txt.text = "Next value: " + results1[cur1 + 1] + " - " + prices1[cur1 + 1];
         else
             nextlvl1txt.text = "Max level reached";
+
+        // Оновлення статусу кнопки для першої властивості (якщо є достатньо монет для покупки наступного рівня)
+        if (cur1 + 1 < prices1.Length && player.coins >= prices1[cur1 + 1])
+            currentlvl1txt.gameObject.GetComponentInParent<Button>().interactable = true;
+        else
             currentlvl1txt.gameObject.GetComponentInParent<Button>().interactable = false;
 
+        // Оновлення тексту для поточного рівня та ціни для другої властивості
+        currentlvl2txt.text = "Current coin boost: " + results2[cur2];
+
         if (cur2 + 1 < results2.Length)
-            nextlvl2txt.text = "Next MaxHP: " + results2[cur2 + 1] + " - " + prices2[cur2 + 1];
+            nextlvl2txt.text = "Next coin boost: " + results2[cur2 + 1] + " - " + prices2[cur2 + 1];
         else
             nextlvl2txt.text = "Max level reached";
-            currentlvl2txt.gameObject.GetComponentInParent<Button>().interactable = false;
 
+        // Оновлення статусу кнопки для другої властивості (якщо є достатньо монет для покупки наступного рівня)
+        if (cur2 + 1 < prices2.Length && player.coins >= prices2[cur2 + 1])
+            currentlvl2txt.gameObject.GetComponentInParent<Button>().interactable = true;
+        else
+            currentlvl2txt.gameObject.GetComponentInParent<Button>().interactable = false;
     }
+
     public void hideShop()
     {
         shop.gameObject.SetActive(false);
