@@ -54,12 +54,14 @@ public class PlayerControler : MonoBehaviour
         }    
         Camera.main.gameObject.transform.position = new Vector3(transform.position.x,transform.position.y,-10);
         updateCoin();
+        updateHp();
     }
     private void updateHp()
     {
         
         Save.SaveHP(HP);
         tHp.UpdateBar(HP);
+        tHp.maxHP=MaxHP;
     }
     private void updateCoin()
     {

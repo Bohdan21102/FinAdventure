@@ -10,6 +10,7 @@ public class TraderColider : MonoBehaviour
     private HealthTrader healthTrader;
     private CoinTrader coinTrader;
     private BankMan bankman;
+    private DepositMan depman;
 
     void Start()
     {
@@ -20,11 +21,9 @@ public class TraderColider : MonoBehaviour
         healthTrader = trader.GetComponent<HealthTrader>();
         coinTrader = trader.GetComponent<CoinTrader>();
         bankman = trader.GetComponent<BankMan>();
+        depman = trader.GetComponent<DepositMan>();
 
-        Debug.Log("swordTrader: " + swordTrader);
-        Debug.Log("healthTrader: " + healthTrader);
-        Debug.Log("coinTrader: " + coinTrader);
-        Debug.Log("bankman: " + bankman);
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -66,6 +65,10 @@ public class TraderColider : MonoBehaviour
         if (healthTrader != null)
         {
             healthTrader.isplayerthere = status;
+        }
+        if (depman != null)
+        {
+            depman.isPlayerThere = status;
         }
     }
 }

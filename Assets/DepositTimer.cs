@@ -1,22 +1,22 @@
 using System.Collections;
 using UnityEngine;
 
-public class BankTimer : MonoBehaviour
+public class DepositTimer : MonoBehaviour
 {
-    public BankMan bankMan;
+    public DepositMan bankMan;
     private PlayerControler playerControler;
 
     public int cuttime;
-    private int maxTime = 100;
+    private int maxTime = 300;
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
     }
 
-    public void Initialize(BankMan bankManRef)
+    public void Initialize(DepositMan depManRef)
     {
-        bankMan = bankManRef;
+        bankMan = depManRef;
         playerControler = FindObjectOfType<PlayerControler>();
     }
 
@@ -46,7 +46,7 @@ public class BankTimer : MonoBehaviour
         {
             bankMan.TimerEnded();
         }
-        playerControler.coins -= 1100;
+        playerControler.coins += 110;
         Destroy(gameObject);
     }
     private void Update()
