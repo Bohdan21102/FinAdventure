@@ -36,8 +36,6 @@ public class CoinTrader : MonoBehaviour
 
 
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (isplayerthere)
@@ -61,48 +59,31 @@ public class CoinTrader : MonoBehaviour
                     Save.cur1_trader1 = cur1;
                     Save.SaveCur1_trader1();
                 }
-                else
-                {
-                    //Debug.Log("Недостатньо монет для покупки наступної швидкості");
-                }
             }
-            else
+            else if (Buying == 1)
             {
-                //Debug.Log("Досягнуто максимальної швидкості");
-            }
-        }
-        else if (Buying == 1)
-        {
-            if (cur2 + 1 < prices2.Length)
-            {
-                if (player.coins >= prices2[cur2 + 1])
+                if (cur2 + 1 < prices2.Length)
                 {
-                    player.coins -= prices2[cur2 + 1];
-                    cur2++;
-                    
-                    Save.coinboost = results2[cur2];
-                    
-                    Save.Savecoinboost();
-                    Save.cur2_trader1 = cur2;
-                    Save.SaveCur2_trader1();
-                }
-                else
-                {
-                    //Debug.Log("Недостатньо монет для більшого хп");
-                }
-            }
-            else
-            {
-                //Debug.Log("Досягнуто максимального хп");
-            }
-        }
+                    if (player.coins >= prices2[cur2 + 1])
+                    {
+                        player.coins -= prices2[cur2 + 1];
+                        cur2++;
 
-        updatePrices();
+                        Save.coinboost = results2[cur2];
+
+                        Save.Savecoinboost();
+                        Save.cur2_trader1 = cur2;
+                        Save.SaveCur2_trader1();
+                    }
+                }
+
+                updatePrices();
+            }
+        }
     }
 
     public void updatePrices()
     {
-        // Оновлення тексту для поточного рівня та ціни для першої властивості
         currentlvl1txt.text = "Current value: " + results1[cur1];
 
         if (cur1 + 1 < results1.Length)
@@ -110,13 +91,11 @@ public class CoinTrader : MonoBehaviour
         else
             nextlvl1txt.text = "Max level reached";
 
-        // Оновлення статусу кнопки для першої властивості (якщо є достатньо монет для покупки наступного рівня)
         if (cur1 + 1 < prices1.Length && player.coins >= prices1[cur1 + 1])
             currentlvl1txt.gameObject.GetComponentInParent<Button>().interactable = true;
         else
             currentlvl1txt.gameObject.GetComponentInParent<Button>().interactable = false;
 
-        // Оновлення тексту для поточного рівня та ціни для другої властивості
         currentlvl2txt.text = "Current coin boost: " + results2[cur2];
 
         if (cur2 + 1 < results2.Length)
@@ -124,7 +103,6 @@ public class CoinTrader : MonoBehaviour
         else
             nextlvl2txt.text = "Max level reached";
 
-        // Оновлення статусу кнопки для другої властивості (якщо є достатньо монет для покупки наступного рівня)
         if (cur2 + 1 < prices2.Length && player.coins >= prices2[cur2 + 1])
             currentlvl2txt.gameObject.GetComponentInParent<Button>().interactable = true;
         else

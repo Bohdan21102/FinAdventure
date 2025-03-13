@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DepositTimer : MonoBehaviour
 {
-    public DepositMan bankMan;
+    public DepositMan depMan;
     private PlayerControler playerControler;
 
     public int cuttime;
@@ -16,16 +16,16 @@ public class DepositTimer : MonoBehaviour
 
     public void Initialize(DepositMan depManRef)
     {
-        bankMan = depManRef;
+        depMan = depManRef;
         playerControler = FindObjectOfType<PlayerControler>();
     }
 
     void Start()
     {
         cuttime = maxTime;
-        if (bankMan != null)
+        if (depMan != null)
         {
-            bankMan.timertxt.text = cuttime.ToString();
+            depMan.timertxt.text = cuttime.ToString();
         }
         StartCoroutine(Timer());
     }
@@ -36,24 +36,24 @@ public class DepositTimer : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             cuttime--;
-            if (bankMan != null)
+            if (depMan != null)
             {
-                bankMan.timertxt.text = cuttime.ToString();
+                depMan.timertxt.text = cuttime.ToString();
             }
         }
 
-        if (bankMan != null)
+        if (depMan != null)
         {
-            bankMan.TimerEnded();
+            depMan.TimerEnded();
         }
         playerControler.coins += 110;
         Destroy(gameObject);
     }
     private void Update()
     {
-        if (bankMan != null)
+        if (depMan != null)
         {
-            bankMan.timertxt.text = cuttime.ToString();
+            depMan.timertxt.text = cuttime.ToString();
         }
     }
 }

@@ -16,7 +16,6 @@ public class TraderColider : MonoBehaviour
     {
         trader = transform.parent.gameObject;
 
-        // Cache references to all traders at the start
         swordTrader = trader.GetComponent<TraderSword>();
         healthTrader = trader.GetComponent<HealthTrader>();
         coinTrader = trader.GetComponent<CoinTrader>();
@@ -30,7 +29,6 @@ public class TraderColider : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            // Set isplayerthere to true for all relevant traders
             SetTraderStatus(true);
         }
     }
@@ -39,14 +37,12 @@ public class TraderColider : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            // Set isplayerthere to false for all relevant traders
             SetTraderStatus(false);
         }
     }
 
     private void SetTraderStatus(bool status)
     {
-        // Ensure the components exist before setting their status
         if (coinTrader != null)
         {
             coinTrader.isplayerthere = status;

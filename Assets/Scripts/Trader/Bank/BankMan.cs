@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DepositMan : MonoBehaviour
+public class BankMan : MonoBehaviour
 {
     public bool isPlayerThere = false;
     public GameObject shop;
@@ -14,7 +14,7 @@ public class DepositMan : MonoBehaviour
 
     private void Start()
     {
-        activeButton = GameObject.Find("MakeDeposit").GetComponent<Button>();
+        activeButton = GameObject.Find("TakeLoan").GetComponent<Button>();
         shop.SetActive(false);
 
     }
@@ -24,23 +24,18 @@ public class DepositMan : MonoBehaviour
         shop.SetActive(isPlayerThere);
     }
 
-    public void Buy(Button baton)
+    public void TakeLoan()
     {
-        player.coins -= 100 ;
-        activeButton = baton;
+        player.coins += 1000;
+        activeButton = GameObject.Find("MakeDeposit").GetComponent<Button>();
 
-        // Якщо є таймер, кнопка не активна
-        
-
-        // Створюємо таймер
         GameObject timerObj = Instantiate(timerPrefab, transform.position, Quaternion.identity);
-        DepositTimer timerScript = timerObj.GetComponent<DepositTimer>();
+        BankTimer timerScript = timerObj.GetComponent<BankTimer>();
         timerScript.Initialize(this);
     }
 
     public void TimerEnded()
     {
-        // Коли таймер закінчився, дозволяємо натискати кнопку знову
         isTimerActive = false;
 
         if (activeButton != null)
@@ -62,13 +57,12 @@ public class DepositMan : MonoBehaviour
         UpdateShopState();
     }
 
-    // Оновлення для перевірки таймера в методі Update
     private void Update()
     {
-        if (FindObjectOfType<DepositTimer>() != null)
+        if (FindObjectOfType<BankTimer>() != null)
         {
             activeButton.interactable = false;
-            timertxt.text= FindObjectOfType<DepositTimer>().cuttime.ToString();
+            timertxt.text= FindObjectOfType<BankTimer>().cuttime.ToString();
         }
         else
         {
@@ -79,8 +73,6 @@ public class DepositMan : MonoBehaviour
         
        
     }
-
-    // Метод для активації таймера
     public void ActivateTimer()
     {
         isTimerActive = true;
