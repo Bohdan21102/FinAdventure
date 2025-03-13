@@ -10,28 +10,25 @@ public class TraderColider : MonoBehaviour
     private HealthTrader healthTrader;
     private CoinTrader coinTrader;
     private BankMan bankman;
+    private DepositMan depman;
 
     void Start()
     {
         trader = transform.parent.gameObject;
 
-        // Cache references to all traders at the start
         swordTrader = trader.GetComponent<TraderSword>();
         healthTrader = trader.GetComponent<HealthTrader>();
         coinTrader = trader.GetComponent<CoinTrader>();
         bankman = trader.GetComponent<BankMan>();
+        depman = trader.GetComponent<DepositMan>();
 
-        Debug.Log("swordTrader: " + swordTrader);
-        Debug.Log("healthTrader: " + healthTrader);
-        Debug.Log("coinTrader: " + coinTrader);
-        Debug.Log("bankman: " + bankman);
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            // Set isplayerthere to true for all relevant traders
             SetTraderStatus(true);
         }
     }
@@ -40,14 +37,12 @@ public class TraderColider : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            // Set isplayerthere to false for all relevant traders
             SetTraderStatus(false);
         }
     }
 
     private void SetTraderStatus(bool status)
     {
-        // Ensure the components exist before setting their status
         if (coinTrader != null)
         {
             coinTrader.isplayerthere = status;
@@ -66,6 +61,10 @@ public class TraderColider : MonoBehaviour
         if (healthTrader != null)
         {
             healthTrader.isplayerthere = status;
+        }
+        if (depman != null)
+        {
+            depman.isPlayerThere = status;
         }
     }
 }

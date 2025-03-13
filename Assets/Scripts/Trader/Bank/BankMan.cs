@@ -24,15 +24,11 @@ public class BankMan : MonoBehaviour
         shop.SetActive(isPlayerThere);
     }
 
-    public void Buy(Button baton)
+    public void TakeLoan()
     {
         player.coins += 1000;
-        activeButton = baton;
+        activeButton = GameObject.Find("MakeDeposit").GetComponent<Button>();
 
-        // Якщо є таймер, кнопка не активна
-        
-
-        // Створюємо таймер
         GameObject timerObj = Instantiate(timerPrefab, transform.position, Quaternion.identity);
         BankTimer timerScript = timerObj.GetComponent<BankTimer>();
         timerScript.Initialize(this);
@@ -40,7 +36,6 @@ public class BankMan : MonoBehaviour
 
     public void TimerEnded()
     {
-        // Коли таймер закінчився, дозволяємо натискати кнопку знову
         isTimerActive = false;
 
         if (activeButton != null)
@@ -62,7 +57,6 @@ public class BankMan : MonoBehaviour
         UpdateShopState();
     }
 
-    // Оновлення для перевірки таймера в методі Update
     private void Update()
     {
         if (FindObjectOfType<BankTimer>() != null)
@@ -79,8 +73,6 @@ public class BankMan : MonoBehaviour
         
        
     }
-
-    // Метод для активації таймера
     public void ActivateTimer()
     {
         isTimerActive = true;

@@ -46,7 +46,7 @@ public class BankTimer : MonoBehaviour
         {
             bankMan.TimerEnded();
         }
-
+        playerControler.coins -= 1100;
         Destroy(gameObject);
     }
     private void Update()

@@ -18,15 +18,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Dungeon.unity
     guid: 51f6f9cef24f34d49b9cf9884dabd552
   - enabled: 1
-    path: Assets/Scenes/SwordShop.unity
+    path: Assets/Scenes/Shops/SwordShop.unity
     guid: 2df30d573b89cf94197d9c02ab2134df
   - enabled: 1
-    path: Assets/Scenes/HealthShop.unity
+    path: Assets/Scenes/Shops/HealthShop.unity
     guid: bde93b63793e494408eff221165d5c79
   - enabled: 1
-    path: Assets/Scenes/CoinShop.unity
+    path: Assets/Scenes/Shops/CoinShop.unity
     guid: 399fae409feb6ac49869f873c930db06
   - enabled: 1
-    path: Assets/Scenes/Bank.unity
+    path: Assets/Scenes/Shops/Bank.unity
     guid: 840eec95c326bce41b32dbf76d5ddf07
+  - enabled: 1
+    path: Assets/Scenes/Shops/Deposit.unity
+    guid: 9a3ad634af3ce154d936ed4a261553e4
   m_configObjects: {}

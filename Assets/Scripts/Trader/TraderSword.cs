@@ -34,8 +34,6 @@ public class TraderSword : MonoBehaviour
         shop.gameObject.SetActive(false);
 
     }
-
-    // Update is called once per frame
     void Update()
     {
         if(isplayerthere)
@@ -46,7 +44,7 @@ public class TraderSword : MonoBehaviour
     }
     public void Buy(int Buying)
     {
-        if (Buying == 0) 
+        if (Buying == 0)
         {
             if (cur1 + 1 < prices1.Length)
             {
@@ -60,42 +58,28 @@ public class TraderSword : MonoBehaviour
                     Save.cur1_trader3 = cur1;
                     Save.SaveCur1_trader3();
                 }
-                else
-                {
-                    //Debug.Log("Недостатньо монет для покупки наступного рівня радіусу");
-                }
-            }
-            else
-            {
-                //Debug.Log("Досягнуто максимального рівня радіусу");
-            }
-        }
-        else if (Buying == 1) 
-        {
-            if (cur2 + 1 < prices2.Length)
-            {
-                if (player.coins >= prices2[cur2 + 1])
-                {
-                    player.coins -= prices2[cur2 + 1];
-                    cur2++;
-                    player.gameObject.GetComponent<PlayerControler>().hurt = results2[cur2];
-                    Save.hurt = results2[cur2];
-                    Save.Savehurt();
-                    Save.cur2_trader3 = cur2;
-                    Save.SaveCur2_trader3();
-                }
-                else
-                {
-                   //Debug.Log("Недостатньо монет для покупки наступного рівня урону");
-                }
-            }
-            else
-            {
-                //Debug.Log("Досягнуто максимального рівня урону");
-            }
-        }
 
-        updatePrices();
+            }
+            else if (Buying == 1)
+            {
+                if (cur2 + 1 < prices2.Length)
+                {
+                    if (player.coins >= prices2[cur2 + 1])
+                    {
+                        player.coins -= prices2[cur2 + 1];
+                        cur2++;
+                        player.gameObject.GetComponent<PlayerControler>().hurt = results2[cur2];
+                        Save.hurt = results2[cur2];
+                        Save.Savehurt();
+                        Save.cur2_trader3 = cur2;
+                        Save.SaveCur2_trader3();
+                    }
+
+                }
+
+                updatePrices();
+            }
+        }
     }
 
     public void updatePrices()
@@ -106,7 +90,6 @@ public class TraderSword : MonoBehaviour
             return;
         }
 
-        // Update current and next speed value (for radius)
         currentlvl1txt.text = "Current radius: " + results1[cur1];
         if (cur1 + 1 < results1.Length)
         {
@@ -119,7 +102,6 @@ public class TraderSword : MonoBehaviour
             nextlvl1txt.gameObject.GetComponentInParent<Button>().interactable = false;
         }
 
-        // Update current and next MaxHP value (for hurt)
         currentlvl2txt.text = "Current hurt: " + results2[cur2];
         if (cur2 + 1 < results2.Length)
         {

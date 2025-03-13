@@ -24,8 +24,6 @@ public class EnemyControler : MonoBehaviour
         target = FindObjectOfType<PlayerControler>().gameObject;
         hptxt=FindAnyObjectByType<HP_manager>().GetComponent<HP_manager>();
     }
-
-    // Update is called once per frame
     private void OnBecameVisible()
     {
         visible = true;
