@@ -38355,6 +38355,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 560616532}
     - target: {fileID: 6882789822643081927, guid: 2efaba47ab190cb499ea3bd53bb47a50, type: 3}
+      propertyPath: Hpbar
+      value: 
+      objectReference: {fileID: 560616532}
+    - target: {fileID: 6882789822643081927, guid: 2efaba47ab190cb499ea3bd53bb47a50, type: 3}
       propertyPath: tcoin
       value: 
       objectReference: {fileID: 1802981548}
