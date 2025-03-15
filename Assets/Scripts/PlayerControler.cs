@@ -23,17 +23,23 @@ public class PlayerControler : MonoBehaviour
         Save.Getradius();
         Save.Getspeed();
         Save.GetmaxHP();
+
+        rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     void Start()
     {
+        Hpbar = GameObject.Find("HP_bar").GetComponent<HP_bar>();
 
-        MaxHP=Save.maxHP;
+        MaxHP =Save.maxHP;
         speed = Save.speed;
         Hpbar.maxHP = MaxHP;        
         HP = Save.HP;
+
+        
+
         updateHp();
-        rb2d = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();   
+          
         coins = Save.coins;      
         updateCoin();
         hurt = Save.hurt;

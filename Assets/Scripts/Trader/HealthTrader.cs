@@ -45,6 +45,7 @@ public class HealthTrader : MonoBehaviour
 
     public void Buy(int Buying)
     {
+        Debug.Log(Buying);
         if (Buying == 0)
         {
             if (cur1 + 1 < prices1.Length)
@@ -61,8 +62,11 @@ public class HealthTrader : MonoBehaviour
                 }
 
             }
-            else if (Buying == 1)
+        }
+        
+        if (Buying == 1)
             {
+                Debug.Log(cur2 + prices2[cur2 + 1]+ results2[cur2+1]);
                 if (cur2 + 1 < prices2.Length)
                 {
                     if (player.coins >= prices2[cur2 + 1])
@@ -83,8 +87,8 @@ public class HealthTrader : MonoBehaviour
                 }
 
                 updatePrices();
-            }
-        }
+            }    
+        
     }
 
     public void updatePrices()
