@@ -26,7 +26,7 @@ public class PlayerControler : MonoBehaviour
     }
     void Start()
     {
-        Hpbar = GameObject.Find("HP_bar");
+        Hpbar = GameObject.Find("HP_bar").GetComponent<HP_bar>();
         MaxHP=Save.maxHP;
         speed = Save.speed;
         Hpbar.maxHP = MaxHP;        
@@ -43,14 +43,16 @@ public class PlayerControler : MonoBehaviour
 
     void Update()
     {
-        rb2d.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical") * speed);
-        if(rb2d.velocity!= Vector2.zero )
+        rb2d.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized * speed;
+
+        if (rb2d.velocity!= Vector2.zero )
         {
             animator.Play("Walk");
         }    
         Camera.main.gameObject.transform.position = new Vector3(transform.position.x,transform.position.y,-10);
         updateCoin();
         updateHp();
+
     }
     private void updateHp()
     {

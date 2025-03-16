@@ -8,6 +8,7 @@ public class HP_manager : MonoBehaviour
     public GameObject LastHurtEnemy;
     void Start()
     {
+        HPbar = GameObject.Find("Enemy_HP_bar").GetComponent<HP_bar>();
         if (HPbar != null) HPbar.gameObject.SetActive(false);
     }
 
