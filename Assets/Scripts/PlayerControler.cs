@@ -26,7 +26,7 @@ public class PlayerControler : MonoBehaviour
     }
     void Start()
     {
-
+        Hpbar = GameObject.Find("HP_bar").GetComponent<HP_bar>();
         MaxHP=Save.maxHP;
         speed = Save.speed;
         Hpbar.maxHP = MaxHP;        
