@@ -4,44 +4,67 @@ using UnityEngine;
 
 public class TraderColider : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private GameObject trader;
+    public GameObject trader;
+
+    private TraderSword swordTrader;
+    private HealthTrader healthTrader;
+    private CoinTrader coinTrader;
+    private BankMan bankman;
+    private DepositMan depman;
 
     void Start()
     {
+        trader = transform.parent.gameObject;
 
-        trader=GetComponentInParent<Transform>().gameObject;
-        Debug.Log(trader);
+        swordTrader = trader.GetComponent<TraderSword>();
+        healthTrader = trader.GetComponent<HealthTrader>();
+        coinTrader = trader.GetComponent<CoinTrader>();
+        bankman = trader.GetComponent<BankMan>();
+        depman = trader.GetComponent<DepositMan>();
+
+       
     }
 
-    // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Enter");
-        if (collision.gameObject.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
-            if (trader.GetComponent<TraderSword>() != null)
-            {
-                trader.GetComponent<TraderSword>().isplayerthere = true;
-            }
-            else if (trader.GetComponent<HealthTrader>() != null)
-            {
-                trader.GetComponent<HealthTrader>().isplayerthere = true;
-            }
+            SetTraderStatus(true);
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
-            if (trader.GetComponent<TraderSword>() != null)
-            {
-                trader.GetComponent<TraderSword>().isplayerthere = false;
-            }
-            else if(trader.GetComponent<HealthTrader>()!=null)
-            {
-                trader.GetComponent<HealthTrader>().isplayerthere = false;
-            }
+            SetTraderStatus(false);
+        }
+    }
+
+    private void SetTraderStatus(bool status)
+    {
+        if (coinTrader != null)
+        {
+            coinTrader.isplayerthere = status;
+        }
+
+        if (bankman != null)
+        {
+            bankman.isPlayerThere = status;
+        }
+
+        if (swordTrader != null)
+        {
+            swordTrader.isplayerthere = status;
+        }
+
+        if (healthTrader != null)
+        {
+            healthTrader.isplayerthere = status;
+        }
+        if (depman != null)
+        {
+            depman.isPlayerThere = status;
         }
     }
 }

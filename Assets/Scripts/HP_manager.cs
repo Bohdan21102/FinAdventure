@@ -1,41 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class HP_manager : MonoBehaviour
 {
-    public HP_bar HPtxt;
+    public HP_bar HPbar;
     public GameObject LastHurtEnemy;
     void Start()
     {
-        HPtxt.gameObject.SetActive(false);
+        HPbar = GameObject.Find("Enemy_HP_bar").GetComponent<HP_bar>();
+        if (HPbar != null) HPbar.gameObject.SetActive(false);
     }
 
     void Update()
     {
-        if(HPtxt!=null)
+        if(HPbar != null)
         {
             if (LastHurtEnemy != null)
             {
-                HPtxt.gameObject.SetActive(true);
+                HPbar.gameObject.SetActive(true);
                 if (LastHurtEnemy.GetComponent<EnemyControler>() == null)
                 {
-                    HPtxt.maxHP = LastHurtEnemy.GetComponent<Barrel>().MaxHP;
-                    HPtxt.UpdateBar(LastHurtEnemy.GetComponent<Barrel>().health);
+                    HPbar.maxHP = LastHurtEnemy.GetComponent<Barrel>().MaxHP;
+                    HPbar.UpdateBar(LastHurtEnemy.GetComponent<Barrel>().health);
 
                 }
                 else
                 {
-                    HPtxt.maxHP = LastHurtEnemy.GetComponent<EnemyControler>().MaxHP;
-                    HPtxt.UpdateBar(LastHurtEnemy.GetComponent<EnemyControler>().HP);
+                    HPbar.maxHP = LastHurtEnemy.GetComponent<EnemyControler>().MaxHP;
+                    HPbar.UpdateBar(LastHurtEnemy.GetComponent<EnemyControler>().HP);
                 }
             }
             else
             {
-                HPtxt.gameObject.SetActive(false);
+                HPbar.gameObject.SetActive(false);
             }
         }
     }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,7 +8,7 @@ public class PlayerControler : MonoBehaviour
     private Vector3 enemypos;
     private Animator animator;
     //знизу public, зверху private
-    public HP_bar tHp;
+    public HP_bar Hpbar;
     public int HP = 100;
     public int MaxHP = 100; 
     public float speed = 5f;
@@ -28,10 +26,10 @@ public class PlayerControler : MonoBehaviour
     }
     void Start()
     {
-
+        Hpbar = GameObject.Find("HP_bar").GetComponent<HP_bar>();
         MaxHP=Save.maxHP;
         speed = Save.speed;
-        tHp.maxHP = MaxHP;        
+        Hpbar.maxHP = MaxHP;        
         HP = Save.HP;
         updateHp();
         rb2d = GetComponent<Rigidbody2D>();
@@ -43,23 +41,25 @@ public class PlayerControler : MonoBehaviour
         speed = Save.speed; 
     }
 
-
-    // Update is called once per frame
     void Update()
     {
-        rb2d.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical") * speed);
-        if(rb2d.velocity!= Vector2.zero )
+        rb2d.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized * speed;
+
+        if (rb2d.velocity!= Vector2.zero )
         {
             animator.Play("Walk");
         }    
         Camera.main.gameObject.transform.position = new Vector3(transform.position.x,transform.position.y,-10);
         updateCoin();
+        updateHp();
+
     }
     private void updateHp()
     {
         
         Save.SaveHP(HP);
-        tHp.UpdateBar(HP);
+        Hpbar.UpdateBar(HP);
+        Hpbar.maxHP=MaxHP;
     }
     private void updateCoin()
     {
