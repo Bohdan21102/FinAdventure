@@ -116,4 +116,6 @@ public class CoinTrader : MonoBehaviour
         currentLevel1 = Save.cur1_trader1;
         currentLevel2 = Save.cur2_trader1;
     }
+
+   
 }
