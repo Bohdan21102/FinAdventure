@@ -7,7 +7,7 @@ public class DepositTimer : MonoBehaviour
     private PlayerControler playerControler;
 
     public int cuttime;
-    private int maxTime = 300;
+    private const int maxTime = 300;
 
     private void Awake()
     {
@@ -23,33 +23,30 @@ public class DepositTimer : MonoBehaviour
     void Start()
     {
         cuttime = maxTime;
-        if (depMan != null)
-        {
-            depMan.timertxt.text = cuttime.ToString();
-        }
+        UpdateTimerText();
         StartCoroutine(Timer());
     }
 
-    IEnumerator Timer()
+    private IEnumerator Timer()
     {
         while (cuttime > 0)
         {
             yield return new WaitForSeconds(1);
             cuttime--;
-            if (depMan != null)
-            {
-                depMan.timertxt.text = cuttime.ToString();
-            }
+            UpdateTimerText();
         }
 
-        if (depMan != null)
-        {
-            depMan.TimerEnded();
-        }
+        depMan.TimerEnded();
         playerControler.coins += 110;
         Destroy(gameObject);
     }
+
     private void Update()
+    {
+        UpdateTimerText();
+    }
+
+    private void UpdateTimerText()
     {
         if (depMan != null)
         {
