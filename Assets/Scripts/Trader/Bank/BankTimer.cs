@@ -23,10 +23,7 @@ public class BankTimer : MonoBehaviour
     void Start()
     {
         cuttime = maxTime;
-        if (bankMan != null)
-        {
-            bankMan.timertxt.text = cuttime.ToString();
-        }
+        UpdateTimerText();
         StartCoroutine(Timer());
     }
 
@@ -36,20 +33,20 @@ public class BankTimer : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             cuttime--;
-            if (bankMan != null)
-            {
-                bankMan.timertxt.text = cuttime.ToString();
-            }
+            UpdateTimerText();
         }
 
-        if (bankMan != null)
-        {
-            bankMan.TimerEnded();
-        }
+        bankMan.TimerEnded();
         playerControler.coins -= 1100;
         Destroy(gameObject);
     }
+
     private void Update()
+    {
+        UpdateTimerText();
+    }
+
+    private void UpdateTimerText()
     {
         if (bankMan != null)
         {

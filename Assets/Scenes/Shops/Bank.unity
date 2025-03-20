@@ -8949,7 +8949,7 @@ GameObject:
   - component: {fileID: 2121558950}
   - component: {fileID: 2121558949}
   m_Layer: 0
-  m_Name: tile_0107
+  m_Name: Coins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

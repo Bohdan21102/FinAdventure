@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+
 
 public class DepositMan : MonoBehaviour
 {
@@ -10,13 +12,12 @@ public class DepositMan : MonoBehaviour
     public TextMeshProUGUI timertxt;
     public GameObject timerPrefab;
     private Button activeButton;
-    private bool isTimerActive = false;
 
     private void Start()
     {
+
         activeButton = GameObject.Find("MakeDeposit").GetComponent<Button>();
         shop.SetActive(false);
-
     }
 
     public void UpdateShopState()
@@ -26,7 +27,7 @@ public class DepositMan : MonoBehaviour
 
     public void MakeDeposit()
     {
-        player.coins -= 100 ;
+        player.coins -= 100;
         activeButton = GameObject.Find("MakeDeposit").GetComponent<Button>();
 
         GameObject timerObj = Instantiate(timerPrefab, transform.position, Quaternion.identity);
@@ -36,7 +37,7 @@ public class DepositMan : MonoBehaviour
 
     public void TimerEnded()
     {
-        isTimerActive = false;
+
 
         if (activeButton != null)
         {
@@ -56,28 +57,40 @@ public class DepositMan : MonoBehaviour
         isPlayerThere = true;
         UpdateShopState();
     }
+
     private void Update()
     {
         if (FindObjectOfType<DepositTimer>() != null)
         {
             activeButton.interactable = false;
-            timertxt.text= FindObjectOfType<DepositTimer>().cuttime.ToString();
+            timertxt.text = FindObjectOfType<DepositTimer>().cuttime.ToString();
         }
         else
         {
             activeButton.interactable = true;
         }
         UpdateShopState();
-        
-        
-       
     }
+
     public void ActivateTimer()
     {
-        isTimerActive = true;
+
         if (activeButton != null)
         {
             activeButton.interactable = false;
+        }
+    }
+
+    private void SetButtons()
+    {
+        Button[] buttons = FindObjectsOfType<Button>();
+        foreach (Button button in buttons)
+        {
+            {
+                if (button.gameObject.name == "Close") button.onClick.AddListener(HideShop);
+                if (button.gameObject.name == "MakeDeposit") button.onClick.AddListener(MakeDeposit);
+            }
+
         }
     }
 }
