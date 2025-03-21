@@ -22,7 +22,7 @@ public class Teleport : MonoBehaviour
             StartCoroutine(LoadSceneAfterDelay(0.4f));
         }
     }
-
+    //open secen after short delay
     private IEnumerator LoadSceneAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);

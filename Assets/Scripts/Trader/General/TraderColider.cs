@@ -15,7 +15,7 @@ public class TraderColider : MonoBehaviour
     void Start()
     {
         trader = transform.parent.gameObject;
-
+        //finding trader script
         swordTrader = trader.GetComponent<TraderSword>();
         healthTrader = trader.GetComponent<HealthTrader>();
         coinTrader = trader.GetComponent<CoinTrader>();
@@ -43,6 +43,7 @@ public class TraderColider : MonoBehaviour
 
     private void SetTraderStatus(bool status)
     {
+        //change isPlayerThere
         if (coinTrader != null)
         {
             coinTrader.isPlayerThere = status;

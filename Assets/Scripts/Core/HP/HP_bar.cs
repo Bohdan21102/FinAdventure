@@ -7,8 +7,9 @@ public class HP_bar : MonoBehaviour
     
     public void UpdateBar(float HP)
     {
-        float coificient = (HP / maxHP);
-        float HPWidth =  coificient * maxHPWidth;
+        float coeficient = (HP / maxHP);
+        float HPWidth =  coeficient * maxHPWidth;
         RTC.sizeDelta = new Vector2(HPWidth, RTC.sizeDelta.y);
+        // resixe bar
     }
 }
