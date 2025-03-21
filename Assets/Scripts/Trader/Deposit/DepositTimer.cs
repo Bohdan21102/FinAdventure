@@ -26,7 +26,7 @@ public class DepositTimer : MonoBehaviour
         UpdateTimerText();
         StartCoroutine(Timer());
     }
-
+    //timer
     private IEnumerator Timer()
     {
         while (cuttime > 0)
@@ -45,7 +45,7 @@ public class DepositTimer : MonoBehaviour
     {
         UpdateTimerText();
     }
-
+    //update text
     private void UpdateTimerText()
     {
         if (depMan != null)

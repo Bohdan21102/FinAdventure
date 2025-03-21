@@ -10,6 +10,9 @@ public class CoinTrader : MonoBehaviour
     public GameObject shop;
     public PlayerControler player;
 
+    //1-price of 1 coin
+    //2-coin bosst
+
     public TextMeshProUGUI currentLevel1Text;
     public TextMeshProUGUI nextLevel1Text;
     public TextMeshProUGUI currentLevel2Text;
@@ -84,6 +87,7 @@ public class CoinTrader : MonoBehaviour
 
     public void UpdatePrices()
     {
+        //update text
         currentLevel1Text.text = "Current value: " + results1[currentLevel1];
 
         if (currentLevel1 + 1 < results1.Length)
@@ -116,4 +120,6 @@ public class CoinTrader : MonoBehaviour
         currentLevel1 = Save.cur1_trader1;
         currentLevel2 = Save.cur2_trader1;
     }
+
+   
 }

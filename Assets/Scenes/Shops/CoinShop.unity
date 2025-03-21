@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83ffe22da2c6674fa927d034c9b1b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trader: {fileID: 0}
+  trader: {fileID: 1480596424}
 --- !u!58 &145250347
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -651,7 +651,7 @@ GameObject:
   - component: {fileID: 339824249}
   - component: {fileID: 339824248}
   m_Layer: 5
-  m_Name: TextSword
+  m_Name: TextLoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6879,7 +6879,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694542037}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6889,7 +6889,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000008046627, y: -166.84413}
+  m_AnchoredPosition: {x: 0, y: -166.84413}
   m_SizeDelta: {x: 250.67, y: 41.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &694542039
@@ -7288,7 +7288,7 @@ GameObject:
   - component: {fileID: 927537012}
   - component: {fileID: 927537011}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TextPrice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7904,7 +7904,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1480596428}
         m_TargetAssemblyTypeName: TraderSword, Assembly-CSharp
-        m_MethodName: hideShop
+        m_MethodName: HideShop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9028,19 +9028,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb53f5cbf5041864ab22c55c1a4219e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isplayerthere: 0
+  isPlayerThere: 0
   shop: {fileID: 826024072}
   player: {fileID: 338454893}
-  currentlvl1txt: {fileID: 694542039}
-  nextlvl1txt: {fileID: 927537011}
-  currentlvl2txt: {fileID: 873539820}
-  nextlvl2txt: {fileID: 339824248}
+  currentLevel1Text: {fileID: 694542039}
+  nextLevel1Text: {fileID: 927537011}
+  currentLevel2Text: {fileID: 873539820}
+  nextLevel2Text: {fileID: 339824248}
   prices1: 00000000c8000000e803000088130000
   prices2: 00000000f401000064000000d0070000
   results1: 0a0000000b0000000c0000000f000000
   results2: 0100000002000000050000000a000000
-  cur1: 0
-  cur2: 0
+  currentLevel1: 0
+  currentLevel2: 0
 --- !u!1 &1626126111
 GameObject:
   m_ObjectHideFlags: 0
@@ -9381,7 +9381,7 @@ GameObject:
   - component: {fileID: 2121558950}
   - component: {fileID: 2121558949}
   m_Layer: 0
-  m_Name: tile_0107
+  m_Name: Coins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

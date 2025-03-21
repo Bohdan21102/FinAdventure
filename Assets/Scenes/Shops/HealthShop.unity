@@ -7544,7 +7544,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1480596428}
         m_TargetAssemblyTypeName: HealthTrader, Assembly-CSharp
-        m_MethodName: hideShop
+        m_MethodName: HideShop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9028,13 +9028,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998f22b338c25044abc4cd55171105f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isplayerthere: 0
+  isPlayerThere: 0
   shop: {fileID: 826024072}
   player: {fileID: 338454893}
-  currentlvl1txt: {fileID: 694542039}
-  nextlvl1txt: {fileID: 927537011}
-  currentlvl2txt: {fileID: 873539820}
-  nextlvl2txt: {fileID: 339824248}
+  currentLevel1Text: {fileID: 0}
+  nextLevel1Text: {fileID: 0}
+  currentLevel2Text: {fileID: 0}
+  nextLevel2Text: {fileID: 0}
   prices1: 0000000064000000c8000000f4010000
   prices2: 00000000c8000000f4010000d0070000
   results1:
@@ -9043,8 +9043,8 @@ MonoBehaviour:
   - 10
   - 15
   results2: 6400000096000000c8000000f4010000
-  cur1: 0
-  cur2: 0
+  currentLevel1: 0
+  currentLevel2: 0
 --- !u!1 &1626126111
 GameObject:
   m_ObjectHideFlags: 0
@@ -9385,7 +9385,7 @@ GameObject:
   - component: {fileID: 2121558950}
   - component: {fileID: 2121558949}
   m_Layer: 0
-  m_Name: tile_0107
+  m_Name: Coins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

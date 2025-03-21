@@ -10,10 +10,11 @@ public class BankMan : MonoBehaviour
     public TextMeshProUGUI timertxt;
     public GameObject timerPrefab;
     private Button activeButton;
-  
+
 
     private void Start()
     {
+
         activeButton = GameObject.Find("TakeLoan").GetComponent<Button>();
         shop.SetActive(false);
     }
@@ -35,7 +36,7 @@ public class BankMan : MonoBehaviour
 
     public void TimerEnded()
     {
-       
+
         if (activeButton != null)
         {
             activeButton.interactable = true;
@@ -78,16 +79,4 @@ public class BankMan : MonoBehaviour
         }
     }
 
-    private void SetButtons()
-    {
-        Button[] buttons = FindObjectsOfType<Button>();
-        foreach (Button button in buttons)
-        {
-            {
-                if (button.gameObject.name == "Close") button.onClick.AddListener(HideShop);
-                if (button.gameObject.name == "MakeDeposit") button.onClick.AddListener(TakeLoan);
-            }
-
-        }
-    }
 }

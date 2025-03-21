@@ -15,7 +15,6 @@ public class DepositMan : MonoBehaviour
 
     private void Start()
     {
-
         activeButton = GameObject.Find("MakeDeposit").GetComponent<Button>();
         shop.SetActive(false);
     }
@@ -81,16 +80,5 @@ public class DepositMan : MonoBehaviour
         }
     }
 
-    private void SetButtons()
-    {
-        Button[] buttons = FindObjectsOfType<Button>();
-        foreach (Button button in buttons)
-        {
-            {
-                if (button.gameObject.name == "Close") button.onClick.AddListener(HideShop);
-                if (button.gameObject.name == "MakeDeposit") button.onClick.AddListener(MakeDeposit);
-            }
-
-        }
-    }
+  
 }
