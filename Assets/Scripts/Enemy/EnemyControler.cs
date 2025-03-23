@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class EnemyControler : MonoBehaviour
 {
-    private GameObject target;
-    private bool visible;
-    private Rigidbody2D rb2d;
-    private bool canAttack = false;
-    private bool canHurt = false;
+    [SerializeField] GameObject target;
+    [SerializeField] bool visible;
+    [SerializeField] Rigidbody2D rb2d;
+    [SerializeField] bool canAttack = false;
+    [SerializeField] bool canHurt = false;
 
-    public float speed = 5f;
-    public int HP;
-    public int MaxHP;
-    public HP_manager hptxt;
-    public int hurt = 10;
-    public GameObject coin;
-    public int coinsCount = 5;
+    [SerializeField] float speed = 5f;
+    [SerializeField] public int HP;
+    [SerializeField] public int MaxHP;
+    [SerializeField] HP_manager hptxt;
+    [SerializeField] public int hurt = 10;
+    [SerializeField] GameObject coin;
+    [SerializeField] int coinsCount = 5;
 
     void Start()
     {

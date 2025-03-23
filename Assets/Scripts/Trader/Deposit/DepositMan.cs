@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class DepositMan : MonoBehaviour
 {
     public bool isPlayerThere = false;
-    public GameObject shop;
-    public PlayerControler player;
+    [SerializeField] GameObject shop;
+    [SerializeField] PlayerControler player;
     public TextMeshProUGUI timertxt;
-    public GameObject timerPrefab;
+    [SerializeField] GameObject timerPrefab;
     private Button activeButton;
 
     private void Start()

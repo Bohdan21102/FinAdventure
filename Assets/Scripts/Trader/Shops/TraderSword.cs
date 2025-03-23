@@ -7,20 +7,20 @@ using UnityEngine.UI;
 public class TraderSword : MonoBehaviour
 {
     public bool isPlayerThere = false;
-    public GameObject shop;
-    public PlayerControler player;
+    [SerializeField] GameObject shop;
+    [SerializeField] PlayerControler player;
 
-    public TextMeshProUGUI currentLevel1Text;
-    public TextMeshProUGUI nextLevel1Text;
-    public TextMeshProUGUI currentLevel2Text;
-    public TextMeshProUGUI nextLevel2Text;
+    [SerializeField] TextMeshProUGUI currentLevel1Text;
+    [SerializeField] TextMeshProUGUI nextLevel1Text;
+    [SerializeField] TextMeshProUGUI currentLevel2Text;
+    [SerializeField] TextMeshProUGUI nextLevel2Text;
 
-    public int[] prices1 = { 0, 200, 1000, 5000 };
-    public int[] prices2 = { 0, 100, 500, 1000 };
-    public int[] results1 = { 3, 5, 7, 10 };
-    public int[] results2 = { 3, 5, 10, 20 };
-    public int currentLevel1;
-    public int currentLevel2;
+    [SerializeField] int[] prices1 = { 0, 200, 1000, 5000 };
+    [SerializeField] int[] prices2 = { 0, 100, 500, 1000 };
+    [SerializeField] int[] results1 = { 3, 5, 7, 10 };
+    [SerializeField] int[] results2 = { 3, 5, 10, 20 };
+    [SerializeField] int currentLevel1;
+    [SerializeField] int currentLevel2;
 
     void Start()
     {

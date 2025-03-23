@@ -7,23 +7,23 @@ using UnityEngine.UI;
 public class CoinTrader : MonoBehaviour
 {
     public bool isPlayerThere = false;
-    public GameObject shop;
-    public PlayerControler player;
+    [SerializeField] GameObject shop;
+    [SerializeField] PlayerControler player;
 
     //1-price of 1 coin
     //2-coin bosst
 
-    public TextMeshProUGUI currentLevel1Text;
-    public TextMeshProUGUI nextLevel1Text;
-    public TextMeshProUGUI currentLevel2Text;
-    public TextMeshProUGUI nextLevel2Text;
+    [SerializeField] TextMeshProUGUI currentLevel1Text;
+    [SerializeField] TextMeshProUGUI nextLevel1Text;
+    [SerializeField] TextMeshProUGUI currentLevel2Text;
+    [SerializeField] TextMeshProUGUI nextLevel2Text;
 
-    public int[] prices1 = { 0, 500, 1000, 2000 };
-    public int[] prices2 = { 0, 500, 1000, 2000 };
-    public int[] results1 = { 10, 11, 12, 15 };
-    public int[] results2 = { 0, 1, 2, 5 };
-    public int currentLevel1;
-    public int currentLevel2;
+    [SerializeField] int[] prices1 = { 0, 500, 1000, 2000 };
+    [SerializeField] int[] prices2 = { 0, 500, 1000, 2000 };
+    [SerializeField] int[] results1 = { 10, 11, 12, 15 };
+    [SerializeField] int[] results2 = { 0, 1, 2, 5 };
+    [SerializeField] int currentLevel1;
+    [SerializeField] int currentLevel2;
 
     void Start()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Barrel : MonoBehaviour
 {
-    public bool CanHurt;
+    [SerializeField] bool CanHurt;
     public int hpless = 0;
     public int health;
     public int MaxHP;

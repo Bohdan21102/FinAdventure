@@ -4,11 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class Teleport : MonoBehaviour
 {
-    public int scene;
-    public GameObject exit;
+    [SerializeField] int scene;
+    [SerializeField] GameObject exit;
 
     private void Start()
     {
+        exit = GameObject.Find("Exit");
         exit.GetComponent<Animator>().Play("Open");
     }
 

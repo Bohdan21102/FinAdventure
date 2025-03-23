@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shops/Deposit.unity
     guid: 9a3ad634af3ce154d936ed4a261553e4
+  - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: f99e878622eacb748bdf387fb3f59b1a
   m_configObjects: {}

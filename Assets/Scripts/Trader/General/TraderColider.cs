@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TraderColider : MonoBehaviour
 {
-    public GameObject trader;
+    [SerializeField] GameObject trader;
 
     private TraderSword swordTrader;
     private HealthTrader healthTrader;
