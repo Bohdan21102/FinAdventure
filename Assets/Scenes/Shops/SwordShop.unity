@@ -381,6 +381,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c8e7bb0102d8648a8b1ac1775cc7be, type: 3}
+--- !u!114 &176457507 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2626521132338605867, guid: b4c8e7bb0102d8648a8b1ac1775cc7be, type: 3}
+  m_PrefabInstance: {fileID: 176457506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb52d67bd37cbdf4dacb59c759ba5cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &185080222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7418,6 +7429,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1677241676}
     m_Modifications:
+    - target: {fileID: 2174724742710970220, guid: 2508793c53c51d349ab0ffaeb50f8e71, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 176457507}
+    - target: {fileID: 2174724742710970220, guid: 2508793c53c51d349ab0ffaeb50f8e71, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenScene
+      objectReference: {fileID: 0}
     - target: {fileID: 2174724742729914900, guid: 2508793c53c51d349ab0ffaeb50f8e71, type: 3}
       propertyPath: m_Name
       value: PausePack
@@ -7465,6 +7484,30 @@ PrefabInstance:
     - target: {fileID: 2174724742729914901, guid: 2508793c53c51d349ab0ffaeb50f8e71, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174724743268719287, guid: 2508793c53c51d349ab0ffaeb50f8e71, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 176457507}
+    - target: {fileID: 2174724743268719287, guid: 2508793c53c51d349ab0ffaeb50f8e71, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174724743823501964, guid: 2508793c53c51d349ab0ffaeb50f8e71, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 176457507}
+    - target: {fileID: 2174724743823501964, guid: 2508793c53c51d349ab0ffaeb50f8e71, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174724744260777671, guid: 2508793c53c51d349ab0ffaeb50f8e71, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 176457507}
+    - target: {fileID: 2174724744260777671, guid: 2508793c53c51d349ab0ffaeb50f8e71, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClosePauseMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2508793c53c51d349ab0ffaeb50f8e71, type: 3}

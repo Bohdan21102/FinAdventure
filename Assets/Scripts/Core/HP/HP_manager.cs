@@ -10,7 +10,12 @@ public class HP_manager : MonoBehaviour
     void Start()
     {
         HPbar = GameObject.Find("Enemy_HP_bar").GetComponent<HP_bar>();
-        if (HPbar != null) HPbar.gameObject.SetActive(false);
+        if (HPbar != null)
+        {
+            HPbar.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-715, 36, 0);
+            HPbar.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            HPbar.gameObject.SetActive(false);
+        }
     }
 
     void Update()
