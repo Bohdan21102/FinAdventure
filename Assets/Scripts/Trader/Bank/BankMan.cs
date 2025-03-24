@@ -26,6 +26,7 @@ public class BankMan : MonoBehaviour
 
     public void TakeLoan()
     {
+        GameObject.FindObjectOfType<SoundManager>().Click();
         player.coins += 1000;
         activeButton = GameObject.Find("TakeLoan").GetComponent<Button>();
 
@@ -46,6 +47,7 @@ public class BankMan : MonoBehaviour
 
     public void HideShop()
     {
+        
         isPlayerThere = false;
         UpdateShopState();
     }

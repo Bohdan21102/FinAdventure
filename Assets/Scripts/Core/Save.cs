@@ -21,6 +21,9 @@ public class Save : MonoBehaviour
     public static int cur1_trader3;  // Trader 3's cur1
     public static int cur2_trader3;  // Trader 3's cur2
 
+    public static float musicvolume;
+    public static float soundvolume;
+
     public static void SaveCoin()
     {
         PlayerPrefs.SetInt("Coins", coins);
@@ -185,6 +188,28 @@ public class Save : MonoBehaviour
         cur2_trader3 = PlayerPrefs.GetInt("cur2_trader3");
     }
 
+    public static void Savemusicvolume()
+    {
+        PlayerPrefs.SetFloat("Musicvolume", musicvolume);
+        PlayerPrefs.Save();
+    }
+
+    public static void Getmusicvolume()
+    {
+        musicvolume = PlayerPrefs.GetFloat("Musicvolume");
+    }
+
+    public static void Savesoundvolume()
+    {
+        PlayerPrefs.SetFloat("Soundvolume", soundvolume);
+        PlayerPrefs.Save();
+    }
+
+    public static void Getsoundvolume()
+    {
+        soundvolume = PlayerPrefs.GetFloat("Soundvolume");
+    }
+
     public static void Reset()
     {
         playedBefore = false;
@@ -203,6 +228,9 @@ public class Save : MonoBehaviour
         PlayerPrefs.SetInt("cur2_trader2", 0);
         PlayerPrefs.SetInt("cur1_trader3", 0);
         PlayerPrefs.SetInt("cur2_trader3", 0);
+
+        PlayerPrefs.SetFloat("musicvolume", 1f);
+        PlayerPrefs.SetFloat("soundvolume", 1f);
 
         PlayerPrefs.Save();
     }

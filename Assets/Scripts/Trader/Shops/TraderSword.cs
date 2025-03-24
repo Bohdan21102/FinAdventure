@@ -39,6 +39,7 @@ public class TraderSword : MonoBehaviour
 
     public void Buy(int buying)
     {
+        GameObject.FindObjectOfType<SoundManager>().Click();
         if (buying == 0)
         {
             UpgradeRadius();

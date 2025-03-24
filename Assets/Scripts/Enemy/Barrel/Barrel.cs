@@ -16,6 +16,7 @@ public class Barrel : MonoBehaviour
     void Start()
     {
         hpless = FindObjectOfType<PlayerControler>().hurt;
+        hptxt = GameObject.FindObjectOfType<HP_manager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,7 +45,7 @@ public class Barrel : MonoBehaviour
     private void ApplyDamage()
     {
         health -= hpless;
-
+        GameObject.FindObjectOfType<SoundManager>().Barrel();
         if (health <= 0)
         {
             SpawnCoins();

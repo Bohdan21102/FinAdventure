@@ -69,6 +69,7 @@ public class EnemyControler : MonoBehaviour
     private void ApplyDamage()
     {
         HP -= target.GetComponent<PlayerControler>().hurt;
+        GameObject.FindObjectOfType<SoundManager>().Hurt();
 
         if (HP <= 0)
         {

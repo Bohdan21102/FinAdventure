@@ -36,6 +36,7 @@ public class CoinScript : MonoBehaviour
 
     private void CollectCoin(Collider2D collision)
     {
+        GameObject.FindObjectOfType<SoundManager>().Coin();
         collision.gameObject.GetComponent<PlayerControler>().coins += value;
         animator.Play("Collect");
         Destroy(gameObject, 0.3f);

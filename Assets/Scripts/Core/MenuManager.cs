@@ -13,17 +13,20 @@ public class MenuManager : MonoBehaviour
     }
     public void StartGame()
     {
+        GameObject.FindObjectOfType<SoundManager>().Click();
         SceneManager.LoadScene(1);
         Save.playedBefore=true;
     }
 
     public void Settingd()
     {
+        GameObject.FindObjectOfType<SoundManager>().Click();
         SceneManager.LoadScene(8);
         
     }
     public void Close()
     {
+        GameObject.FindObjectOfType<SoundManager>().Click();
         Application.Quit();
     }
     private void Update()

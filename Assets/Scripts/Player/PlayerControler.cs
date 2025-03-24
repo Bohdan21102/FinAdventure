@@ -65,6 +65,10 @@ public class PlayerControler : MonoBehaviour
     private void HandleMovement()
     {
         rb2d.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized * speed;
+        if(rb2d.velocity!=Vector2.zero)
+        {
+            GameObject.FindObjectOfType<SoundManager>().Walk();
+        }
 
         if (rb2d.velocity != Vector2.zero)
         {
@@ -105,13 +109,17 @@ public class PlayerControler : MonoBehaviour
 
     private void HandleEnemyCollision(Collision2D collision)
     {
-        enemyPos = collision.gameObject.transform.position;
-        Vector2 forceTo = new Vector2(transform.position.x, transform.position.y) - new Vector2(enemyPos.x, enemyPos.y);
-        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(forceTo * -10, ForceMode2D.Impulse);
-        HP -= collision.gameObject.GetComponent<EnemyControler>().hurt;
-        UpdateHP();
-        animator.Play("Hurt");
-        CheckPlayerDeath();
+        if (collision.gameObject.GetComponent<EnemyControler>() != null) {
+            enemyPos = collision.gameObject.transform.position;
+            Vector2 forceTo = new Vector2(transform.position.x, transform.position.y) - new Vector2(enemyPos.x, enemyPos.y);
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(forceTo * -10, ForceMode2D.Impulse);
+            HP -= collision.gameObject.GetComponent<EnemyControler>().hurt;
+            GameObject.FindObjectOfType<SoundManager>().Hurt();
+            UpdateHP();
+            animator.Play("Hurt");
+            CheckPlayerDeath();
+        }
+        
     }
 
     private void CheckPlayerDeath()

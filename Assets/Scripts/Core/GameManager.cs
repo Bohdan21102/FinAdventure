@@ -26,16 +26,19 @@ public class GameManager : MonoBehaviour
 
     public void PauseMenu()
     {
+        GameObject.FindObjectOfType<SoundManager>().Click();
         panel_.SetActive(true);
         Time.timeScale = 0;
     }
 
     public void OpenScene(int sceneId)
     {
+        GameObject.FindObjectOfType<SoundManager>().Click();
         SceneManager.LoadScene(sceneId);
     }
     public void ClosePauseMenu()
     {
+        GameObject.FindObjectOfType<SoundManager>().Click();
         panel_.SetActive(false);
         Time.timeScale = 1;
     }

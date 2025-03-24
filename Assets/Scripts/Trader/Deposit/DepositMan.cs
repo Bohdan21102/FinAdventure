@@ -26,6 +26,7 @@ public class DepositMan : MonoBehaviour
 
     public void MakeDeposit()
     {
+        GameObject.FindObjectOfType<SoundManager>().Click();
         player.coins -= 100;
         activeButton = GameObject.Find("MakeDeposit").GetComponent<Button>();
 
