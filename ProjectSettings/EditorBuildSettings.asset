@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Map.unity
     guid: 4197394ba4389cd43a2626a653029686
   - enabled: 1
-    path: Assets/Scenes/Dungeon.unity
+    path: Assets/Scenes/DungeonTest.unity
     guid: 51f6f9cef24f34d49b9cf9884dabd552
   - enabled: 1
     path: Assets/Scenes/Shops/SwordShop.unity
@@ -32,4 +32,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shops/Deposit.unity
     guid: 9a3ad634af3ce154d936ed4a261553e4
+  - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: f99e878622eacb748bdf387fb3f59b1a
+  - enabled: 1
+    path: Assets/Scenes/Dungeons/Dungeon1.unity
+    guid: 3b861fc6ee89f214ca42ca042966460b
+  - enabled: 1
+    path: Assets/Scenes/Dungeons/Dungeon2.unity
+    guid: 1167578623c25c34daff6feb16a53d70
   m_configObjects: {}

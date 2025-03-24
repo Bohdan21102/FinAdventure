@@ -252,6 +252,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358ac6e4ba2c3244fa4576d2f9c81fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  visible: 0
+  rb2d: {fileID: 0}
+  canAttack: 0
+  canHurt: 0
   speed: 7
   HP: 10
   MaxHP: 10
