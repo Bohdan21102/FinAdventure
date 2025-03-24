@@ -67,7 +67,7 @@ public class PlayerControler : MonoBehaviour
         rb2d.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized * speed;
         if(rb2d.velocity!=Vector2.zero)
         {
-            GameObject.FindObjectOfType<SoundManager>().Walk();
+            //GameObject.FindObjectOfType<SoundManager>().Walk();
         }
 
         if (rb2d.velocity != Vector2.zero)

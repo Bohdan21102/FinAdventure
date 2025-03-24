@@ -60400,42 +60400,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2933946929288936842}
-    - target: {fileID: 180600149, guid: a9b021a6ce896dc409673a65da1f5dd7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 180600149, guid: a9b021a6ce896dc409673a65da1f5dd7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 696328334, guid: a9b021a6ce896dc409673a65da1f5dd7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 696328334, guid: a9b021a6ce896dc409673a65da1f5dd7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2933946929288936842}
-    - target: {fileID: 696328334, guid: a9b021a6ce896dc409673a65da1f5dd7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenScene
-      objectReference: {fileID: 0}
     - target: {fileID: 1306595621, guid: a9b021a6ce896dc409673a65da1f5dd7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2933946929288936842}
-    - target: {fileID: 1306595621, guid: a9b021a6ce896dc409673a65da1f5dd7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClosePauseMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 1808878958, guid: a9b021a6ce896dc409673a65da1f5dd7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2933946929288936842}
-    - target: {fileID: 1808878958, guid: a9b021a6ce896dc409673a65da1f5dd7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PauseMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 9084214864347531606, guid: a9b021a6ce896dc409673a65da1f5dd7, type: 3}
       propertyPath: m_Pivot.x
       value: 0

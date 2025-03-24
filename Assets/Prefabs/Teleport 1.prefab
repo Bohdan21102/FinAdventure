@@ -62,5 +62,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minscene: 9
-  maxscene: 9
+  maxscene: 10
   exit: {fileID: 0}

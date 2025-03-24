@@ -113395,7 +113395,7 @@ PrefabInstance:
       objectReference: {fileID: 874359565}
     - target: {fileID: 4928478364316333686, guid: a2b5b99cac51561449b6fa49be06d29a, type: 3}
       propertyPath: maxscene
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6943295661257101264, guid: a2b5b99cac51561449b6fa49be06d29a, type: 3}
       propertyPath: m_Name
@@ -113407,11 +113407,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6943295661257101266, guid: a2b5b99cac51561449b6fa49be06d29a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 49.375
+      value: -0.875
       objectReference: {fileID: 0}
     - target: {fileID: 6943295661257101266, guid: a2b5b99cac51561449b6fa49be06d29a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.5
+      value: -3.75
       objectReference: {fileID: 0}
     - target: {fileID: 6943295661257101266, guid: a2b5b99cac51561449b6fa49be06d29a, type: 3}
       propertyPath: m_LocalPosition.z
