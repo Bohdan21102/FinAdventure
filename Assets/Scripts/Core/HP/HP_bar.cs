@@ -7,9 +7,7 @@ public class HP_bar : MonoBehaviour
 
     private void Start()
     {
-        RTC = gameObject.GetComponent<RectTransform>();
-        RTC.localPosition = new Vector3(-715, 472, 0);
-        RTC.localScale = new Vector3(1.5f, 1.5f, 1.5f); 
+        
 
     }
     public void UpdateBar(float HP)

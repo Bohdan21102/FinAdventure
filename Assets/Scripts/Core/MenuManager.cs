@@ -15,4 +15,14 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(1);
         Save.playedBefore=true;
     }
+
+    public void Settingd()
+    {
+        SceneManager.LoadScene(8);
+        
+    }
+    public void Close()
+    {
+        Application.Quit();
+    }
 }

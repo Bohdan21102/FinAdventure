@@ -46,6 +46,9 @@ public class PlayerControler : MonoBehaviour
     private void InitializePlayer()
     {
         Hpbar = GameObject.Find("HP_bar").GetComponent<HP_bar>();
+        Hpbar.RTC = Hpbar.gameObject.GetComponent<RectTransform>();
+        Hpbar.RTC.localPosition = new Vector3(-715, 472, 0);
+        Hpbar.RTC.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         MaxHP = Save.maxHP;
         speed = Save.speed;
         Hpbar.maxHP = MaxHP;
@@ -71,7 +74,7 @@ public class PlayerControler : MonoBehaviour
 
     private void UpdateCameraPosition()
     {
-        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+        Camera.main.transform.position =new Vector3(gameObject.transform.position.x,gameObject.transform.position.y,-10);
     }
 
     private void UpdateUI()

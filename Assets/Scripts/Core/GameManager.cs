@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.R))
         {
-            ResetAll();
+           // ResetAll();
         }
     }
 

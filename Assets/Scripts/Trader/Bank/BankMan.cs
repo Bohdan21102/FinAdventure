@@ -27,7 +27,7 @@ public class BankMan : MonoBehaviour
     public void TakeLoan()
     {
         player.coins += 1000;
-        activeButton = GameObject.Find("MakeDeposit").GetComponent<Button>();
+        activeButton = GameObject.Find("TakeLoan").GetComponent<Button>();
 
         GameObject timerObj = Instantiate(timerPrefab, transform.position, Quaternion.identity);
         BankTimer timerScript = timerObj.GetComponent<BankTimer>();
